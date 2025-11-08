@@ -28,13 +28,7 @@
     </Root>
 
     <!-- Application Logger -->
-    <Logger name="de.antrophos.test" level="DEBUG">
-      <AppenderRef ref="ConsoleAppender"/>
-      <AppenderRef ref="FileAppender"/>
-    </Logger>
-
-    <!-- Spring Logger -->
-    <Logger name="org.springframework" level="INFO">
+    <Logger name="de.antrophos.test" level="DEBUG" additivity="false">
       <AppenderRef ref="ConsoleAppender"/>
       <AppenderRef ref="FileAppender"/>
     </Logger>
