@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- Service Implementation Bean -->
+  <bean id="calculatorService"
+        class="de.antrophos.test.rmi.service.calculator.CalculatorServiceImpl"/>
+
+  <!-- RMI Registry -->
+  <bean id="rmiRegistry"
+        class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+    <property name="port" value="1211"/>
+  </bean>
+
+  <!-- RMI Service Exporter -->
+  <bean id="calculatorServiceExporter"
+        class="org.springframework.remoting.rmi.RmiServiceExporter">
+    <property name="service" ref="calculatorService"/>
+    <property name="serviceInterface" value="de.antrophos.test.rmi.service.CalculatorService"/>
+    <property name="serviceName" value="CalculatorService"/>
+    <property name="servicePort" value="12172"/>
+    <property name="registryPort" value="1211"/>
+  </bean>
+
+</beans>
